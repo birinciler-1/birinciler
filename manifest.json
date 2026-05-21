@@ -1,0 +1,24 @@
+{
+  "name": "BİRİNCİLER",
+  "short_name": "Birinciler",
+  "description": "نظام إدارة المخزون والطلبيات",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "./",
+  "background_color": "#0d1117",
+  "theme_color": "#c9a84c",
+  "icons": [
+    {
+      "src": "logo-home.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo-app.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
