@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark">
 <!-- SEO -->
 <meta name="description" content="BİRİNCİLER — نظام إدارة المخزون والطلبيات لشركة بيرينجيلر">
@@ -95,7 +95,7 @@ body{font-family:'Cairo',Arial,sans-serif;background:#0d1117;color:#f0f6fc;min-h
 .cimg{background:#ffffff;aspect-ratio:1.414/1;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;flex-shrink:0;cursor:pointer;}
 .cimg img{width:100%;height:100%;object-fit:contain;padding:8px;transition:transform .3s;}
 .cimg:hover img{transform:scale(1.04);}
-.noimg{font-size:38px;opacity:0;color:#888;visibility:hidden;}
+.noimg{display:none!important;}
 .co-ovr{position:absolute;top:6px;left:6px;background:rgba(13,17,23,.75);border:1px solid var(--gold3);border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:var(--gold);}
 .view-hint{position:absolute;top:6px;right:6px;background:rgba(201,168,76,.9);border-radius:8px;padding:3px 7px;font-size:10px;font-weight:700;color:#0d1117;opacity:0;transition:opacity .2s;pointer-events:none;}
 .cimg:hover .view-hint{opacity:1;}
@@ -171,7 +171,7 @@ body{font-family:'Cairo',Arial,sans-serif;background:#0d1117;color:#f0f6fc;min-h
 /* صورة التفاصيل مع أسهم */
 .det-img-wrap{background:#f0f0f0;border-radius:16px;overflow:hidden;aspect-ratio:1.414/1;display:flex;align-items:center;justify-content:center;position:relative;}
 .det-img-wrap img{width:100%;height:100%;object-fit:contain;padding:12px;}
-.det-noimg{font-size:60px;opacity:0;visibility:hidden;}
+.det-noimg{display:none!important;}
 .img-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(13,17,23,.45);border:1px solid rgba(201,168,76,.3);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:22px;color:rgba(201,168,76,.9);cursor:pointer;transition:all .25s;z-index:5;user-select:none;backdrop-filter:blur(4px);}
 .img-nav:hover{background:rgba(201,168,76,.8);color:#0d1117;border-color:transparent;}
 .img-nav:active{transform:translateY(-50%) scale(.88);}
@@ -242,7 +242,7 @@ tr:hover td{background:rgba(201,168,76,.04);}
 .tot-val{font-size:22px;font-weight:900;color:var(--gold);}
 
 /* ازرار الفاتورة 4 */
-.ord-foot{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 16px;border-top:1px solid var(--bdr);background:#111827;position:sticky;bottom:0;}
+.ord-foot{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px 16px;border-top:1px solid var(--bdr);background:#111827;position:sticky;bottom:0;}
 .exp-btn{background:linear-gradient(135deg,var(--gold),var(--gold3));color:#0d1117;border:none;border-radius:11px;padding:13px;font-family:'Cairo',sans-serif;font-weight:900;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;}
 .clr-btn{background:var(--bg3);color:var(--muted);border:1px solid var(--bdr);border-radius:11px;padding:13px;font-family:'Cairo',sans-serif;font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;}
 .clr-btn:hover{border-color:var(--red);color:var(--red);}
@@ -250,6 +250,18 @@ tr:hover td{background:rgba(201,168,76,.04);}
 .pdf-btn{background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;border:none;border-radius:11px;padding:13px;font-family:'Cairo',sans-serif;font-weight:900;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;}
 
 @media(max-width:380px){#grid{grid-template-columns:1fr;}}
+/* ══ BARCODE SCANNER ══ */
+.scan-ovl{display:none;position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:500;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
+.scan-ovl.on{display:flex;}
+#html5-qrcode-reader{width:min(88vw,320px)!important;border-radius:14px;overflow:hidden;}
+#html5-qrcode-reader video{border-radius:14px!important;}
+#html5-qrcode-reader img{display:none!important;}
+.scan-ttl{font-size:15px;font-weight:900;color:var(--white);}
+.scan-hint{font-size:11px;color:var(--muted);text-align:center;}
+.scan-result{background:var(--bg2);border:1px solid var(--bdr);border-radius:10px;padding:8px 16px;font-size:12px;font-weight:700;min-width:220px;text-align:center;transition:all .3s;}
+.scan-x{background:var(--bg3);border:1px solid var(--bdr);border-radius:12px;padding:12px 32px;color:var(--white);font-family:'Cairo',sans-serif;font-weight:700;font-size:14px;cursor:pointer;}
+.btn-scan{background:linear-gradient(135deg,#1a6abf,#58a6ff);color:#fff;border:none;border-radius:10px;padding:8px 14px;font-family:'Cairo',sans-serif;font-weight:800;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0;}
+.btn-scan:active{opacity:.85;}
 
 /* ── COMPANY SECTIONS ── */
 .company-section{margin-bottom:4px;background:var(--bg);}
@@ -372,14 +384,16 @@ const db   = firebase.firestore();
 /* ══════════════════════════════════════════
    ✏️  غيّر هذه الثلاثة فقط
 ══════════════════════════════════════════ */
-const GITHUB_USER   = "/birinciler-1";
+const GITHUB_USER   = "birinciler-1";
 const GITHUB_REPO   = "Birinciler";
 const GITHUB_BRANCH = "main";
 
 // Excel: raw.githubusercontent — موثوق ومباشر دائماً
 const EXCEL_URL   = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/data.xlsx`;
 // الصور: jsDelivr CDN — cache + أسرع
-const IMAGES_BASE = `https://cdn.jsdelivr.net/gh/${GITHUB_USER}/${GITHUB_REPO}@${GITHUB_BRANCH}/images/`;
+// جلب الصور — jsDelivr للسرعة مع fallback لـ raw إذا فشل
+const IMAGES_BASE  = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/images/`;
+const IMAGES_BASE2 = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/images/`;
 const IMG_EXTS    = ["webp","png","jpg","jpeg"];
 // ─────────────────────────────────────────────────────────────
 // 🖼️  لوغو شاشة تسجيل الدخول → ارفع ملف اسمه: logo-home
@@ -440,14 +454,15 @@ function loadLoginLogo(){
     <div class="logo">
       <div><div class="logo-n">BİRİNCİLER</div><div class="logo-s">نظام إدارة المخزون</div></div>
     </div>
-    <div style="display:flex;align-items:center;gap:8px;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button id="logoutBtn" onclick="doLogout()" style="display:none;background:rgba(215,58,73,.1);border:1px solid rgba(215,58,73,.4);border-radius:8px;padding:6px 14px;color:#d73a49;font-family:Cairo,sans-serif;font-size:12px;font-weight:700;cursor:pointer;">خروج</button>
       <div class="cnt">عرض <b id="sc">0</b> من <b id="tc">0</b> صنف</div>
-      <button id="logoutBtn" onclick="doLogout()" style="display:none;background:rgba(215,58,73,.12);border:1px solid rgba(215,58,73,.4);border-radius:10px;padding:6px 12px;color:#d73a49;font-family:'Cairo',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;" onmouseover="this.style.background='rgba(215,58,73,.25)'" onmouseout="this.style.background='rgba(215,58,73,.12)'">🚪 خروج</button>
     </div>
   </div>
   <!-- بحث -->
   <div class="hdr-r2">
     <input type="search" class="srch" id="srch" placeholder="🔍  ابحث بالاسم، الكود، الباركود، الشركة...">
+    <button class="btn-scan" onclick="openScanner()">📷 باركود</button>
   </div>
   <!-- فلاتر -->
   <div class="filters-row">
@@ -546,7 +561,19 @@ function loadLoginLogo(){
       <button class="ord-x" onclick="closeOrd()">✕</button>
     </div>
     <div class="ord-flds">
-      <div class="fg"><label>اسم العميل / المندوب</label><input type="text" id="cname" placeholder="أدخل الاسم..."></div>
+      <div class="fg" style="position:relative;">
+        <label>اسم الزبون / العميل</label>
+        <input type="text" id="cname" placeholder="ابحث أو أدخل اسم جديد..." autocomplete="off"
+               oninput="searchCustomer(this.value)" onblur="setTimeout(()=>hideCustList(),200)"/>
+        <div id="custDropdown" style="display:none;position:absolute;top:100%;right:0;left:0;z-index:999;
+             background:#1c2330;border:1.5px solid var(--gold3);border-radius:10px;
+             max-height:200px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.5);">
+        </div>
+        <div id="custBalanceInfo" style="display:none;margin-top:6px;padding:6px 10px;
+             background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);
+             border-radius:8px;font-size:12px;color:var(--gold);">
+        </div>
+      </div>
       <div class="fg"><label>رقم الفاتورة</label><input type="text" id="invN" readonly></div>
       <div class="fg"><label>ملاحظات</label><input type="text" id="onotes" placeholder="أي ملاحظات..."></div>
       <div class="fg"><label>التاريخ</label><input type="text" id="odate" readonly></div>
@@ -566,8 +593,10 @@ function loadLoginLogo(){
     <div class="ord-foot">
       <button class="wa-btn"  onclick="sendWhatsApp()">📲 واتساب PDF</button>
       <button class="pdf-btn" onclick="savePDF()">📄 حفظ PDF</button>
-      <button class="exp-btn" onclick="expXL()">📊 تصدير Excel</button>
-      <button class="clr-btn" onclick="clrOrd()">🗑 مسح الكل</button>
+      <button onclick="saveToFirestore()" style="background:linear-gradient(135deg,#3fb950,#2a8a3a);color:#fff;border:none;border-radius:9px;padding:9px 14px;font-family:Cairo,sans-serif;font-weight:900;font-size:13px;cursor:pointer;">☁ حفظ في النظام</button>
+      <button onclick="newInvoice()" style="background:linear-gradient(135deg,#58a6ff,#1a6abf);color:#fff;border:none;border-radius:9px;padding:9px 14px;font-family:Cairo,sans-serif;font-weight:900;font-size:13px;cursor:pointer;">+ فاتورة جديدة</button>
+      <button class="exp-btn" onclick="expXL()">📊 Excel</button>
+      <button class="clr-btn" onclick="clrOrd()">🗑 مسح</button>
     </div>
   </div>
 </div>
@@ -727,37 +756,13 @@ function cardHTML(it,idx){
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":' &#39;'}[c]));}
 
 // ══ IMAGES ══
-function getVariants(code){
-  const c = String(code).trim();
-  const m = c.match(/^([a-zA-Z]+)[\s\-]*(\d+)$/);
-  if(!m) return [...new Set([c, c.toUpperCase(), c.toLowerCase()])];
-
-  const letUp   = m[1].toUpperCase();
-  const letLo   = m[1].toLowerCase();
-  const letOrig = m[1];
-  const nums    = m[2];
-  const numsPad = nums.padStart(4,'0'); // 56 → 0056 للأسماء المحشوة
-
-  // مرتبة: الأكثر شيوعاً أولاً لتقليل عدد المحاولات
-  return [...new Set([
-    letUp  +' - '+numsPad,   // B - 0056 ← النمط الذي عندك
-    letOrig+' - '+numsPad,
-    letLo  +' - '+numsPad,
-    letUp  +' - '+nums,      // B - 56
-    letOrig+' - '+nums,
-    letUp  +'-'+nums,        // B-56
-    letUp  +nums,            // B56
-    letOrig+nums,
-    c, c.toUpperCase(), c.toLowerCase()
-  ])];
-}
-// Cache ناجح لتجنب إعادة البحث عن نفس الصورة
+// Cache ناجح لتجنب إعادة تحميل نفس الصورة
 const _imgCache = {};
 
 function loadImg(box, code, name){
   if(!code){ box.innerHTML='<div class="noimg">📦</div>'; return; }
 
-  // إذا وجدنا URL سابقاً لهذا الكود استخدمه مباشرة
+  // إذا الصورة محملة مسبقاً استخدمها مباشرة
   if(_imgCache[code]){
     const img = new Image();
     img.alt = name||'';
@@ -769,50 +774,29 @@ function loadImg(box, code, name){
     return;
   }
 
-  // بناء قائمة URLs — webp أولاً لأنها أخف
-  const urls = [];
-  const variants = getVariants(code);
-  // جرّب webp أولاً لكل الصيغ، ثم png، ثم jpg
-  ['webp','png','jpg','jpeg'].forEach(ext => {
-    variants.forEach(v => urls.push(IMAGES_BASE + encodeURIComponent(v) + '.' + ext));
-  });
-
+  // طلب واحد مباشر — الكود = اسم الصورة
+  const url = IMAGES_BASE + encodeURIComponent(String(code).trim()) + '.webp';
   const img = new Image();
   img.alt = name||'';
   img.loading = 'lazy';
   img.decoding = 'async';
   img.style.cssText = 'width:100%;height:100%;object-fit:contain;padding:8px;transition:.3s;';
-
-  let i = 0;
-  function tryNext(){
-    if(i >= urls.length){
-      box.innerHTML = '<div class="noimg">📦</div>';
-      return;
-    }
-    img.onerror = tryNext;
-    img.src = urls[i++];
-  }
-  img.onload = () => {
-    img.onerror = null;
-    _imgCache[code] = img.src; // احفظ الURL الناجح
-  };
-  box.innerHTML = ''; box.appendChild(img); tryNext();
+  img.onload = () => { img.onerror = null; _imgCache[code] = url; };
+  img.onerror = () => { box.innerHTML = '<div class="noimg"></div>'; };
+  box.innerHTML = ''; box.appendChild(img);
+  img.src = url;
 }
 
 // ══ DETAIL MODAL ══
 // Preload صورة التفاصيل عند hover قبل الضغط
 function preloadDet(idx){
   const it = filtered[idx]; if(!it||_imgCache[it.code]) return;
-  const urls = [];
-  ['webp','png','jpg','jpeg'].forEach(ext=>{
-    getVariants(it.code).forEach(v=>urls.push(IMAGES_BASE+encodeURIComponent(v)+'.'+ext));
-  });
+  const url = IMAGES_BASE + encodeURIComponent(String(it.code).trim()) + '.webp';
   const img = new Image();
-  let i=0;
-  function tryP(){ if(i>=urls.length)return; img.onerror=tryP; img.src=urls[i++]; }
-  img.onload=()=>{ img.onerror=null; _imgCache[it.code]=img.src; };
-  tryP();
+  img.onload = () => { img.onerror = null; _imgCache[it.code] = url; };
+  img.src = url;
 }
+
 
 function openDet(idx){detIdx=idx;renderDet();document.getElementById('detOvl').className='det-ovl on';document.body.style.overflow='hidden';}
 function closeDet(){document.getElementById('detOvl').className='det-ovl';document.body.style.overflow='';}
@@ -864,28 +848,18 @@ function renderDet(){
   img.alt = it.name;
   img.loading = 'eager';
 
+
   if(cachedUrl){
     img.src = cachedUrl;
     img.onload = ()=>{ wrap.insertBefore(img, wrap.firstChild); };
   } else {
-    const urls = [];
-    ['webp','png','jpg','jpeg'].forEach(ext => {
-      getVariants(it.code).forEach(v => urls.push(IMAGES_BASE+encodeURIComponent(v)+'.'+ext));
-    });
-    let i = 0;
-    function tryImg(){
-      if(i>=urls.length) return;
-      img.onerror = tryImg;
-      img.src = urls[i++];
-    }
-    img.onload = ()=>{
-      img.onerror = null;
-      _imgCache[it.code] = img.src;
-      wrap.insertBefore(img, wrap.firstChild);
-    };
-    tryImg();
+    const url = IMAGES_BASE + encodeURIComponent(String(it.code).trim()) + '.webp';
+    img.onload = ()=>{ img.onerror = null; _imgCache[it.code] = url; wrap.insertBefore(img, wrap.firstChild); };
+    img.onerror = ()=>{ /* لا صورة */ };
+    img.src = url;
   }
 }
+
 
 function dQC(d){
   const it=filtered[detIdx];
@@ -1177,9 +1151,8 @@ const ADMIN_EMAIL = "mofaknizal@gmail.com"; // ← غيّر هذا إلى إيم
 auth.onAuthStateChanged(user => {
   if (user) {
     document.getElementById('loginScreen').style.display = 'none';
-    // إظهار زر تسجيل الخروج
-    const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) logoutBtn.style.display = 'block';
+    const lb = document.getElementById('logoutBtn');
+    if (lb) lb.style.display = 'block';
     // تسجيل الجلسة في Firestore
     const sessionRef = db.collection('sessions').doc();
     sessionRef.set({
@@ -1198,8 +1171,8 @@ auth.onAuthStateChanged(user => {
     init();
   } else {
     document.getElementById('loginScreen').style.display = 'flex';
-    const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) logoutBtn.style.display = 'none';
+    const lb2 = document.getElementById('logoutBtn');
+    if (lb2) lb2.style.display = 'none';
   }
 });
 
@@ -1267,6 +1240,335 @@ function loadSessions() {
 loadLoginLogo(); // يقرأ logo-home.png/jpg/webp تلقائياً
 
 init();
+
+// ══════════════════════════════════════════════════════
+//  بحث الزبون من Firebase
+// ══════════════════════════════════════════════════════
+let _selectedCustomerId = null;
+
+async function searchCustomer(q) {
+  const dropdown = document.getElementById('custDropdown');
+  const balInfo  = document.getElementById('custBalanceInfo');
+  _selectedCustomerId = null;
+  balInfo.style.display = 'none';
+
+  if (q.length < 2) { dropdown.style.display = 'none'; return; }
+
+  try {
+    // جلب من Firestore
+    const snap = await db.collection('customers')
+      .orderBy('name').startAt(q).endAt(q + '\uf8ff').limit(8).get();
+
+    // بحث إضافي بدون ترتيب إذا لم يجد
+    let results = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+
+    if (!results.length) {
+      // بحث بسيط في كل الزبائن المحملين
+      const all = await db.collection('customers').limit(200).get();
+      results = all.docs
+        .map(d => ({ id: d.id, ...d.data() }))
+        .filter(c => (c.name||'').toLowerCase().includes(q.toLowerCase()))
+        .slice(0, 8);
+    }
+
+    if (!results.length) {
+      dropdown.innerHTML = `<div style="padding:10px 14px;color:var(--muted);font-size:13px;">
+        لا يوجد زبون بهذا الاسم
+        <span style="color:var(--gold);cursor:pointer;font-weight:700;margin-right:8px;"
+              onclick="addNewCustomer('${q.replace(/'/g,"\'")}')">+ إضافة جديد</span>
+      </div>`;
+      dropdown.style.display = 'block';
+      return;
+    }
+
+    dropdown.innerHTML = results.map(c => `
+      <div onclick="selectCustomer('${c.id}','${(c.name||'').replace(/'/g,"\'")}',${parseFloat(c.balance)||0})"
+           style="padding:10px 14px;cursor:pointer;border-bottom:1px solid rgba(48,54,61,.4);
+                  transition:background .12s;"
+           onmouseover="this.style.background='rgba(201,168,76,.08)'"
+           onmouseout="this.style.background=''">
+        <div style="font-weight:700;color:var(--white)">${c.name||'—'}</div>
+        <div style="font-size:11px;color:${parseFloat(c.balance)>0?'var(--red)':'var(--green)'}">
+          الرصيد: ${(parseFloat(c.balance)||0).toLocaleString()} IQD
+          ${c.phone ? ' · ' + c.phone : ''}
+        </div>
+      </div>`).join('');
+
+    // زر إضافة زبون جديد في الأسفل
+    dropdown.innerHTML += `<div onclick="addNewCustomer('${q.replace(/'/g,"\'")}');hideCustList()"
+         style="padding:10px 14px;cursor:pointer;color:var(--gold);font-weight:700;font-size:13px;
+                border-top:1px solid var(--bdr);">
+      + إضافة "${q}" كزبون جديد
+    </div>`;
+
+    dropdown.style.display = 'block';
+  } catch(e) {
+    console.log('customer search error:', e);
+    dropdown.style.display = 'none';
+  }
+}
+
+function selectCustomer(id, name, balance) {
+  _selectedCustomerId = id;
+  document.getElementById('cname').value = name;
+  const balInfo = document.getElementById('custBalanceInfo');
+  const isDebt = balance > 0;
+  balInfo.innerHTML = `الرصيد الحالي: <b style="color:${isDebt?'var(--red)':'var(--green)'}">${balance.toLocaleString()} IQD</b>${isDebt?' ⚠️ عليه دين':'✅ مسدد'}`;
+  balInfo.style.display = 'block';
+  document.getElementById('custDropdown').style.display = 'none';
+}
+
+function hideCustList() {
+  document.getElementById('custDropdown').style.display = 'none';
+}
+
+// إضافة زبون جديد لـ Firebase مباشرة
+async function addNewCustomer(name) {
+  if (!name.trim()) return;
+  try {
+    const ref = await db.collection('customers').add({
+      name:      name.trim(),
+      phone:     '',
+      address:   '',
+      balance:   0,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      source:    'website'
+    });
+    _selectedCustomerId = ref.id;
+    document.getElementById('cname').value = name.trim();
+    const balInfo = document.getElementById('custBalanceInfo');
+    balInfo.innerHTML = `زبون جديد تم إضافته ✅`;
+    balInfo.style.display = 'block';
+    showToast('تم إضافة الزبون: ' + name, true);
+  } catch(e) {
+    showToast('خطأ في إضافة الزبون: ' + e.message);
+  }
+}
+
+// ══════════════════════════════════════════════════════
+//  فاتورة جديدة
+// ══════════════════════════════════════════════════════
+function newInvoice() {
+  if (!confirm('هل تريد فتح فاتورة جديدة؟\nسيتم الاحتفاظ بالفاتورة الحالية كما هي.')) return;
+
+  // تصفير كل شيء
+  order = {};
+  _selectedCustomerId = null;
+  updBadge();
+
+  document.getElementById('cname').value  = '';
+  document.getElementById('onotes').value = '';
+  document.getElementById('custBalanceInfo').style.display = 'none';
+  document.getElementById('custDropdown').style.display   = 'none';
+
+  // رقم فاتورة جديد
+  let n = parseInt(localStorage.getItem('inv_counter') || '0') + 1;
+  localStorage.setItem('inv_counter', n);
+  document.getElementById('invN').value = 'INV - ' + n;
+
+  // تاريخ جديد
+  const now = new Date();
+  document.getElementById('odate').value = now.toLocaleDateString('en-GB');
+  document.getElementById('ordDate').textContent = now.toLocaleDateString('ar', {
+    weekday:'long', year:'numeric', month:'long', day:'numeric'
+  });
+
+  renderOrdTbl();
+  showToast('فاتورة جديدة جاهزة ✅', true);
+}
+
+// ══════════════════════════════════════════════════════
+//  حفظ في Firestore (محدّث — يشمل معرّف الزبون)
+// ══════════════════════════════════════════════════════
+async function saveToFirestore() {
+  const ents = Object.entries(order).filter(([,v]) => v > 0);
+  if (!ents.length) { alert('الطلبية فارغة'); return; }
+
+  const client   = document.getElementById('cname').value  || 'زبون غير محدد';
+  const invNo    = document.getElementById('invN').value   || ('INV-' + Date.now());
+  const notes    = document.getElementById('onotes').value || '';
+  const dateVal  = document.getElementById('odate').value  || new Date().toLocaleDateString('en-GB');
+  const paid     = parseFloat(document.getElementById('opaid')?.value)  || 0;
+  const discount = parseFloat(document.getElementById('odisc')?.value)  || 0;
+
+  const invoiceItems = ents.map(([id, qty]) => {
+    const it = items.find(x => x.id == id);
+    if (!it) return null;
+    return {
+      productId:   it.id,
+      productName: it.name,
+      productCode: it.code,
+      company:     it.company,
+      qty:         qty,
+      unitPrice:   it.price,
+      total:       it.price * qty
+    };
+  }).filter(Boolean);
+
+  const total     = invoiceItems.reduce((s, i) => s + i.total, 0);
+  const netTotal  = total - discount;
+  const remaining = netTotal - paid;
+
+  const invoiceData = {
+    invoiceNo:    invNo,
+    customerName: client,
+    customerId:   _selectedCustomerId || null,
+    date:         firebase.firestore.FieldValue.serverTimestamp(),
+    total:        total,
+    discount:     discount,
+    netTotal:     netTotal,
+    paid:         paid,
+    remaining:    remaining,
+    notes:        notes,
+    status:       'active',
+    currency:     'IQD',
+    items:        invoiceItems,
+    source:       'website'
+  };
+
+  try {
+    await db.collection('invoices').doc(invNo).set(invoiceData);
+
+    // تحديث رصيد الزبون إذا كان معروف
+    if (_selectedCustomerId && remaining > 0) {
+      await db.collection('customers').doc(_selectedCustomerId).update({
+        balance: firebase.firestore.FieldValue.increment(remaining)
+      });
+    }
+
+    showToast('تم حفظ الفاتورة في النظام ✅', true);
+
+    // سؤال: فاتورة جديدة؟
+    setTimeout(() => {
+      if (confirm('تم الحفظ!\nهل تريد فتح فاتورة جديدة؟')) newInvoice();
+    }, 500);
+
+  } catch(e) {
+    alert('خطأ في الحفظ: ' + e.message);
+  }
+}
+
 </script>
+
+<!-- html5-qrcode — مضمون على Safari iOS -->
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+
+<!-- BARCODE SCANNER MODAL -->
+<div class="scan-ovl" id="scanOvl">
+  <div class="scan-ttl">📷 مسح الباركود</div>
+  <div id="html5-qrcode-reader"></div>
+  <div class="scan-hint">وجّه الكاميرا على الباركود — يمسح تلقائياً</div>
+  <div class="scan-result" id="scanResult" style="color:var(--muted)">جاري التشغيل...</div>
+  <button class="scan-x" onclick="closeScanner()">✕ إغلاق</button>
+</div>
+
+<script>
+let _html5Qr = null;
+
+async function openScanner() {
+  document.getElementById('scanOvl').className = 'scan-ovl on';
+  document.body.style.overflow = 'hidden';
+  setResult('جاري تشغيل الكاميرا...', 'var(--muted)');
+
+  _html5Qr = new Html5Qrcode('html5-qrcode-reader');
+
+  const config = {
+    fps: 10,
+    qrbox: { width: 240, height: 120 },
+    aspectRatio: 1.5,
+    formatsToSupport: [
+      Html5QrcodeSupportedFormats.EAN_13,
+      Html5QrcodeSupportedFormats.EAN_8,
+      Html5QrcodeSupportedFormats.CODE_128,
+      Html5QrcodeSupportedFormats.CODE_39,
+      Html5QrcodeSupportedFormats.UPC_A,
+      Html5QrcodeSupportedFormats.UPC_E,
+      Html5QrcodeSupportedFormats.ITF,
+      Html5QrcodeSupportedFormats.CODABAR,
+    ]
+  };
+
+  try {
+    await _html5Qr.start(
+      { facingMode: 'environment' },
+      config,
+      (code) => { onBarcodeFound(code); },
+      (err)  => {}
+    );
+    setResult('وجّه الكاميرا على الباركود', 'var(--muted)');
+  } catch(e) {
+    setResult('⚠️ اسمح للكاميرا من إعدادات Safari', 'var(--red)');
+    console.log('camera error:', e);
+  }
+}
+
+function setResult(msg, color) {
+  const el = document.getElementById('scanResult');
+  if (!el) return;
+  el.textContent = msg;
+  el.style.color = color;
+  el.style.borderColor = color === 'var(--green)' ? 'rgba(63,185,80,.5)'
+                       : color === 'var(--red)'   ? 'rgba(215,58,73,.5)'
+                       : 'var(--bdr)';
+}
+
+async function onBarcodeFound(code) {
+  // أوقف المسح
+  try { await _html5Qr.stop(); } catch(e) {}
+  if (navigator.vibrate) navigator.vibrate(120);
+
+  const found = items.find(it =>
+    (it.barcode && it.barcode.trim() === code.trim()) ||
+    (it.code    && it.code.trim()    === code.trim())
+  );
+
+  if (found) {
+    setResult('✅  ' + found.name, 'var(--green)');
+    setTimeout(() => {
+      closeScanner();
+      let idx = filtered.findIndex(it => it.id === found.id);
+      if (idx === -1) {
+        document.getElementById('srch').value = '';
+        document.getElementById('coF').value  = '';
+        document.getElementById('secF').value = '';
+        applyF();
+        idx = filtered.findIndex(it => it.id === found.id);
+      }
+      if (idx !== -1) openDet(idx);
+    }, 700);
+  } else {
+    setResult('❌  غير موجود: ' + code, 'var(--red)');
+    // أعد المسح بعد ثانيتين
+    setTimeout(async () => {
+      if (!document.getElementById('scanOvl').classList.contains('on')) return;
+      setResult('وجّه الكاميرا على الباركود', 'var(--muted)');
+      try {
+        await _html5Qr.start(
+          { facingMode: 'environment' },
+          { fps:10, qrbox:{width:240,height:120}, aspectRatio:1.5,
+            formatsToSupport:[
+              Html5QrcodeSupportedFormats.EAN_13, Html5QrcodeSupportedFormats.EAN_8,
+              Html5QrcodeSupportedFormats.CODE_128, Html5QrcodeSupportedFormats.CODE_39,
+              Html5QrcodeSupportedFormats.UPC_A, Html5QrcodeSupportedFormats.UPC_E,
+            ]
+          },
+          (c) => { onBarcodeFound(c); },
+          ()  => {}
+        );
+      } catch(e) {}
+    }, 2500);
+  }
+}
+
+async function closeScanner() {
+  try { if (_html5Qr) await _html5Qr.stop(); } catch(e) {}
+  try { if (_html5Qr) _html5Qr.clear(); } catch(e) {}
+  _html5Qr = null;
+  document.getElementById('scanOvl').className = 'scan-ovl';
+  document.getElementById('html5-qrcode-reader').innerHTML = '';
+  document.body.style.overflow = '';
+}
+</script>
+
 </body>
 </html>
