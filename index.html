@@ -62,7 +62,7 @@ body{font-family:'Cairo',Arial,sans-serif;background:#0d1117;color:#f0f6fc;min-h
   transition:border-color .2s;
 }
 .fsel:focus{border-color:var(--gold);}
-.hdr-r3{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:8px;}
+.hdr-r3{display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-top:8px;flex-wrap:wrap;}
 .vgrp{display:flex;background:var(--bg3);border:1px solid var(--bdr);border-radius:10px;overflow:hidden;}
 .vb{padding:7px 12px;border:none;background:transparent;color:var(--dim);cursor:pointer;font-size:15px;transition:all .2s;}
 .vb.on{background:var(--gold);color:#0d1117;}
@@ -343,12 +343,97 @@ tr:hover td{background:rgba(201,168,76,.04);}
 .admin-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid #a07830;}
 .admin-ttl{font-size:18px;font-weight:900;color:#c9a84c;}
 .admin-x{background:#1c2330;border:1px solid #30363d;border-radius:8px;padding:7px 10px;color:#f0f6fc;cursor:pointer;font-size:15px;font-weight:900;}
-.session-card{background:#0d1117;border:1px solid #30363d;border-radius:12px;padding:12px 14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:10px;}
-.sc-info{flex:1;}
-.sc-email{font-size:13px;font-weight:700;color:#f0f6fc;}
-.sc-time{font-size:11px;color:#8b949e;margin-top:3px;}
-.sc-dur{font-size:13px;font-weight:700;color:#c9a84c;white-space:nowrap;}
+.session-card{background:#0d1117;border:1px solid #30363d;border-radius:12px;padding:14px 16px;margin-bottom:10px;}
+.sc-name{font-size:14px;font-weight:800;color:#f0f6fc;margin-bottom:8px;}
+.sc-row{display:flex;align-items:center;gap:8px;margin-top:5px;}
+.sc-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px;white-space:nowrap;}
+.sc-badge.in{background:rgba(35,134,54,.2);color:#3fb950;}
+.sc-badge.out{background:rgba(215,58,73,.15);color:#d73a49;}
+.sc-badge.live{background:rgba(201,168,76,.15);color:#c9a84c;}
+.sc-date{font-size:11px;color:#8b949e;}
+.sc-time-val{font-size:12px;font-weight:700;color:#f0f6fc;}
+.sc-dur{font-size:12px;font-weight:700;color:#c9a84c;margin-top:8px;padding-top:8px;border-top:1px solid #21262d;}
+/* نسبة الربح */
+.profit-ovl{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:500;align-items:center;justify-content:center;}
+.profit-ovl.on{display:flex;}
+.profit-box{background:#161b22;border:1px solid #30363d;border-radius:16px;padding:24px;width:280px;display:flex;flex-direction:column;gap:14px;}
+.profit-title{font-size:16px;font-weight:800;color:#c9a84c;text-align:center;}
+.profit-sub{font-size:12px;color:#8b949e;text-align:center;}
+.profit-input{background:#0d1117;border:1px solid #30363d;border-radius:10px;padding:10px 14px;color:#f0f6fc;font-family:Cairo,sans-serif;font-size:16px;font-weight:700;text-align:center;width:100%;box-sizing:border-box;}
+.profit-input:focus{outline:none;border-color:#c9a84c;}
+.profit-save{background:linear-gradient(135deg,#c9a84c,#8b6914);border:none;border-radius:10px;padding:11px;color:#000;font-family:Cairo,sans-serif;font-size:14px;font-weight:800;cursor:pointer;width:100%;}
+.profit-cancel{background:none;border:1px solid #30363d;border-radius:10px;padding:9px;color:#8b949e;font-family:Cairo,sans-serif;font-size:13px;cursor:pointer;width:100%;}
+.price-profit{font-size:10px;color:#3fb950;font-weight:700;margin-top:2px;}
 .logout-btn-sm{background:rgba(215,58,73,.1);border:1px solid #d73a49;border-radius:8px;padding:6px 12px;color:#d73a49;cursor:pointer;font-size:12px;font-family:'Cairo',sans-serif;}
+
+/* ══ شاشة الشركات ══ */
+#companyScreen{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;padding:14px;}
+.co-card{background:var(--bg2);border:1px solid var(--bdr);border-radius:14px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;transition:.2s;text-align:center;}
+.co-card:active{transform:scale(.96);border-color:var(--gold);}
+.co-card img{width:80px;height:60px;object-fit:contain;}
+.co-card-ph{width:80px;height:60px;background:var(--bg3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:var(--gold);}
+.co-card-name{font-size:13px;font-weight:700;color:var(--fg);}
+.co-card-cnt{font-size:11px;color:var(--muted);background:var(--bg3);border-radius:10px;padding:2px 10px;}
+.co-back{display:none;align-items:center;gap:8px;padding:8px 14px 4px;}
+.co-back-btn{display:flex;align-items:center;gap:8px;background:var(--bg2);border:2px solid var(--gold3);border-radius:12px;padding:9px 16px;color:var(--gold);font-weight:800;font-size:14px;transition:all .2s;box-shadow:0 2px 10px rgba(201,168,76,.15);}
+.co-back-btn:hover{background:rgba(201,168,76,.12);border-color:var(--gold);}
+.co-back-btn:active{transform:scale(.96);}
+
+/* ══ الوضع النهاري ══ */
+body.light-mode{
+  --bg:#f0f2f5;--bg2:#ffffff;--bg3:#e4e8ef;
+  --white:#1a1a2e;--muted:#5a6375;--dim:#888;--bdr:#cdd2dc;
+  background:#f0f2f5;color:#1a1a2e;
+}
+body.light-mode .hdr{background:#ffffff;}
+body.light-mode .actbar{background:#e4e8ef;}
+body.light-mode .nbox{background:#f5f5f5;}
+body.light-mode .cbody{background:#ffffff;}
+body.light-mode table,body.light-mode td{background:#fff;}
+body.light-mode th{background:#f5f5f5;}
+body.light-mode #grid{background:#f0f2f5;}
+body.light-mode #remSec{background:#f0f2f5;}
+body.light-mode .card{background:#ffffff;}
+body.light-mode .co-card{background:#ffffff;}
+body.light-mode .tabs{background:#e4e8ef;}
+body.light-mode .login-box{background:#ffffff;}
+body.light-mode .det-modal,body.light-mode .ord-modal{background:#f0f2f5;}
+body.light-mode .det-hdr,body.light-mode .ord-hdr{background:#ffffff;}
+body.light-mode .det-body{background:#f0f2f5;}
+body.light-mode .dib{background:#ffffff;}
+body.light-mode .det-add-area{background:#ffffff;}
+
+/* ══ شاشة التحميل ══ */
+#loadingScreen{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:24px;
+}
+.ld-logo{width:90px;height:90px;object-fit:contain;border-radius:18px;opacity:.95;}
+.ld-logo-ph{width:90px;height:90px;background:var(--bg2);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:900;color:var(--gold);}
+.ld-title{font-size:20px;font-weight:800;color:var(--gold);letter-spacing:1px;}
+.ld-track{width:220px;height:6px;background:var(--bg3);border-radius:99px;overflow:hidden;}
+.ld-bar{height:100%;width:0%;background:linear-gradient(90deg,#c9a84c,#f0d070,#c9a84c);background-size:200% 100%;border-radius:99px;transition:width .4s ease;animation:ld-shine 1.5s linear infinite;}
+@keyframes ld-shine{0%{background-position:100% 0}100%{background-position:-100% 0}}
+.ld-msg{font-size:13px;color:var(--muted);font-weight:600;min-height:20px;transition:opacity .3s;}
+.theme-btn{background:var(--bg3);border:1px solid var(--bdr);border-radius:8px;padding:6px 10px;color:var(--white);font-size:16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;line-height:1;}
+.theme-btn:hover{border-color:var(--gold);color:var(--gold);}
+
+/* ══ زر المستخدم ══ */
+.user-btn{position:relative;display:none;}
+.user-chip{display:flex;align-items:center;gap:7px;background:var(--bg2);border:1px solid var(--bdr);border-radius:10px;padding:6px 12px;cursor:pointer;transition:all .2s;}
+.user-chip:hover{border-color:var(--gold);}
+.user-avatar{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#c9a84c,#8b6914);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#000;flex-shrink:0;}
+.user-name{font-size:12px;font-weight:700;color:var(--fg);max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.user-arrow{font-size:9px;color:var(--muted);transition:.2s;}
+.user-btn.open .user-arrow{transform:rotate(180deg);}
+.user-dropdown{position:absolute;top:calc(100% + 6px);left:0;min-width:170px;background:var(--bg2);border:1px solid var(--bdr);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.4);padding:8px;display:none;z-index:200;}
+.user-btn.open .user-dropdown{display:block;}
+.user-email{font-size:10px;color:var(--muted);padding:6px 8px 8px;border-bottom:1px solid var(--bdr);margin-bottom:6px;word-break:break-all;}
+.user-dd-btn{width:100%;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;border:none;background:none;cursor:pointer;font-family:Cairo,sans-serif;font-size:12px;font-weight:700;color:var(--fg);transition:.15s;}
+.user-dd-btn:hover{background:var(--bg3);}
+.user-dd-btn.logout{color:#d73a49;}
+.user-dd-btn.logout:hover{background:rgba(215,58,73,.1);}
+
 </style>
 <link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -394,6 +479,7 @@ const EXCEL_URL   = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_R
 // جلب الصور — jsDelivr للسرعة مع fallback لـ raw إذا فشل
 const IMAGES_BASE  = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/images/`;
 const IMAGES_BASE2 = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/images/`;
+const LOGOS_BASE   = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}/images-logo/`;
 const IMG_EXTS    = ["webp","png","jpg","jpeg"];
 // ─────────────────────────────────────────────────────────────
 // 🖼️  لوغو شاشة تسجيل الدخول → ارفع ملف اسمه: logo-home
@@ -431,7 +517,15 @@ function loadLoginLogo(){
   </div>
 </div>
 
-<!-- ADMIN BTN -->
+<!-- شاشة التحميل -->
+<div id="loadingScreen">
+  <img class="ld-logo" id="ldLogo" src="" alt="BİRİNCİLER"
+    onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+  <div class="ld-logo-ph" id="ldLogoPh" style="display:none;">B</div>
+  <div class="ld-title">BİRİNCİLER</div>
+  <div class="ld-track"><div class="ld-bar" id="ldBar"></div></div>
+  <div class="ld-msg" id="ldMsg">جاري الاتصال...</div>
+</div>
 <button id="adminBtn" onclick="openAdmin()" style="display:none">👤 لوحة المشرف</button>
 
 <!-- ADMIN MODAL -->
@@ -448,14 +542,37 @@ function loadLoginLogo(){
   </div>
 </div>
 
+<!-- نافذة نسبة الربح -->
+<div class="profit-ovl" id="profitOvl">
+  <div class="profit-box">
+    <div class="profit-title">💰 نسبة الربح</div>
+    <div class="profit-sub">أدخل النسبة المئوية لتُضاف على السعر في كل بطاقة</div>
+    <input class="profit-input" type="number" id="profitInput" placeholder="مثال: 20" min="0" max="999">
+    <button class="profit-save" onclick="saveProfit()">تطبيق</button>
+    <button class="profit-cancel" onclick="closeProfitPanel()">إلغاء</button>
+  </div>
+</div>
+
 <!-- HEADER -->
 <div class="hdr">
   <div class="hdr-r1">
     <div class="logo">
       <div><div class="logo-n">BİRİNCİLER</div><div class="logo-s">نظام إدارة المخزون</div></div>
     </div>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <button id="logoutBtn" onclick="doLogout()" style="display:none;background:rgba(215,58,73,.1);border:1px solid rgba(215,58,73,.4);border-radius:8px;padding:6px 14px;color:#d73a49;font-family:Cairo,sans-serif;font-size:12px;font-weight:700;cursor:pointer;">خروج</button>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div class="user-btn" id="userBtn">
+        <div class="user-chip" onclick="toggleUserMenu()">
+          <div class="user-avatar" id="userAvatar">؟</div>
+          <div class="user-name" id="userName">مستخدم</div>
+          <div class="user-arrow">▼</div>
+        </div>
+        <div class="user-dropdown">
+          <div class="user-email" id="userEmail"></div>
+          <button class="user-dd-btn" id="themeBtn" onclick="toggleTheme()">🌙 الوضع الليلي</button>
+          <button class="user-dd-btn" id="profitBtn" onclick="openProfitPanel()" style="display:none;color:#3fb950;">💰 نسبة الربح</button>
+          <button class="user-dd-btn logout" onclick="doLogout()">🚪 تسجيل الخروج</button>
+        </div>
+      </div>
       <div class="cnt">عرض <b id="sc">0</b> من <b id="tc">0</b> صنف</div>
     </div>
   </div>
@@ -479,6 +596,8 @@ function loadLoginLogo(){
     </select>
   </div>
   <div class="hdr-r3">
+    <button class="btn btn-gold" onclick="openOrd()" style="padding:7px 13px;font-size:12px;">🛒 الطلبية <span class="cbadge" id="cbadge">0</span></button>
+    <button class="btn btn-stock" id="bstock" onclick="togStock()" style="padding:7px 13px;font-size:12px;">✅ إظهار الباقي</button>
     <div class="vgrp">
       <button class="vb on" id="vg" onclick="setV('g')">⊞</button>
       <button class="vb"    id="vl" onclick="setV('l')">☰</button>
@@ -486,18 +605,13 @@ function loadLoginLogo(){
   </div>
 </div>
 
-<!-- ACTION BAR -->
-<div class="actbar">
-  <button class="btn btn-gold" onclick="openOrd()">🛒 الطلبية <span class="cbadge" id="cbadge">0</span></button>
-  <button class="btn btn-stock" id="bstock" onclick="togStock()">✅ إظهار الباقي</button>
-</div>
-
 <!-- TABS -->
 <div class="tabs">
-  <button class="tab on" id="tp" onclick="showTab('p')">المنتجات</button>
-  <button class="tab"    id="tr" onclick="showTab('r')">الباقي فقط</button>
+  <button class="tab on" id="tp" onclick="showTab('p')">🏢 الشركات</button>
+  <button class="tab"    id="tr" onclick="showTab('r')">📦 المنتجات</button>
 </div>
 
+<div id="companyScreen" style="display:none;"></div>
 <div id="grid"><div class="empty-msg"><div class="spin"></div>جاري تحميل البيانات...</div></div>
 <div id="remSec"></div>
 <div class="toast" id="toast"></div>
@@ -603,17 +717,46 @@ function loadLoginLogo(){
 
 <script>
 // ══ STATE ══
-let items=[], filtered=[], order={}, curView='g', onlyStock=false, detIdx=0;
+let items=[], filtered=[], order={}, curView='g', onlyStock=true, detIdx=0;
 
 // ══ LOAD DATA ══
+function showLoadingScreen(){
+  // انسخ اللوغو من شاشة الدخول
+  const src = document.getElementById('loginLogo').src;
+  const ldLogo = document.getElementById('ldLogo');
+  if(src && !src.endsWith('/')){
+    ldLogo.src = src;
+    ldLogo.style.display = '';
+    document.getElementById('ldLogoPh').style.display = 'none';
+  } else {
+    ldLogo.style.display = 'none';
+    document.getElementById('ldLogoPh').style.display = 'flex';
+  }
+  document.getElementById('loadingScreen').style.display = 'flex';
+  setProgress(10,'جاري الاتصال...');
+}
+
+function setProgress(pct, msg){
+  document.getElementById('ldBar').style.width = pct + '%';
+  if(msg) document.getElementById('ldMsg').textContent = msg;
+}
+
+function hideLoadingScreen(){
+  setProgress(100,'اكتمل التحميل ✓');
+  setTimeout(()=>{ document.getElementById('loadingScreen').style.display='none'; }, 400);
+}
+
 async function init() {
   try {
+    setProgress(25,'جاري تحميل البيانات...');
     const res = await fetch(EXCEL_URL);
     if (!res.ok) throw new Error('فشل تحميل الملف — تأكد من GITHUB_USER و GITHUB_REPO');
+    setProgress(55,'جاري معالجة الملف...');
     const buf  = await res.arrayBuffer();
     const wb   = XLSX.read(buf,{type:'array'});
     const ws   = wb.Sheets[wb.SheetNames[0]];
     const rows = XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
+    setProgress(80,'جاري بناء الكتالوج...');
     const skip = rows[0] && typeof rows[0][0]==='string' && isNaN(Number(rows[0][3]));
     items = (skip?rows.slice(1):rows)
       .filter(r=>String(r[0]||''). trim())
@@ -623,8 +766,11 @@ async function init() {
         price:parseFloat(r[4])||0, company:String(r[5]||'').trim(),
         rem:Number(r[6])||0, section:String(r[7]||'').trim()
       }));
-    buildFilters(); applyF();
+    setProgress(95,'تجهيز الواجهة...');
+    buildFilters(); showCompanyScreen();
+    hideLoadingScreen();
   } catch(e) {
+    hideLoadingScreen();
     document.getElementById('grid').innerHTML=`
       <div class="empty-msg">
         <div style="font-size:44px;margin-bottom:12px">⚠️</div>
@@ -676,7 +822,95 @@ function applyF(){
 }
 
 // ══ RENDER ══
+// ══ شاشة الشركات ══
+let currentView = 'companies'; // 'companies' or 'products'
+
+function refreshCompanyScreenSilent(){
+  // تحديث محتوى شاشة الشركات دون تغيير أي display
+  const coMap = {};
+  items.forEach(it=>{
+    if(!it.company) return;
+    if(onlyStock && it.rem<=0) return;
+    if(!coMap[it.company]) coMap[it.company] = 0;
+    coMap[it.company]++;
+  });
+  const companies = Object.entries(coMap)
+    .filter(([,count])=> count > 0)
+    .sort((a,b)=>a[0].localeCompare(b[0]));
+  document.getElementById('companyScreen').innerHTML = companies.map(([name, count])=>{
+    const logoUrl = LOGOS_BASE + encodeURIComponent(name) + '.webp';
+    return `
+    <div class="co-card" onclick="openCompany('${name.replace(/'/g,"\'")}')">
+      <img src="${logoUrl}" alt="${name}"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+        onload="this.nextElementSibling.style.display='none';">
+      <div class="co-card-ph" style="display:none;">${name.charAt(0)}</div>
+      <div class="co-card-name">${name}</div>
+      <div class="co-card-cnt">${count} صنف</div>
+    </div>`;
+  }).join('');
+}
+
+function showCompanyScreen(){
+  currentView = 'companies';
+  document.getElementById('companyScreen').style.display = 'grid';
+  document.getElementById('grid').style.display = 'none';
+
+  // حساب عدد مواد كل شركة مع مراعاة فلتر الباقي
+  const coMap = {};
+  items.forEach(it=>{
+    if(!it.company) return;
+    if(onlyStock && it.rem<=0) return; // تجاهل المواد المنتهية عند تفعيل الفلتر
+    if(!coMap[it.company]) coMap[it.company] = 0;
+    coMap[it.company]++;
+  });
+
+  const companies = Object.entries(coMap)
+    .filter(([,count])=> count > 0) // أخفِ الشركات التي صار عددها صفر
+    .sort((a,b)=>a[0].localeCompare(b[0]));
+
+  document.getElementById('companyScreen').innerHTML = companies.map(([name, count])=>{
+    const logoUrl = LOGOS_BASE + encodeURIComponent(name) + '.webp';
+    return `
+    <div class="co-card" onclick="openCompany('${name.replace(/'/g,"\'")}')">
+      <img src="${logoUrl}" alt="${name}"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+        onload="this.nextElementSibling.style.display='none';">
+      <div class="co-card-ph" style="display:none;">${name.charAt(0)}</div>
+      <div class="co-card-name">${name}</div>
+      <div class="co-card-cnt">${count} صنف</div>
+    </div>`;
+  }).join('');
+}
+
+function openCompany(company){
+  currentView = 'products';
+  document.getElementById('companyScreen').style.display = 'none';
+  document.getElementById('grid').style.display = '';
+
+  // إظهار شريط البحث والفلاتر
+  document.querySelectorAll('.hdr-r2,.hdr-r3').forEach(el=>el.style.display='');
+
+  // تعيين فلتر الشركة
+  const coF = document.getElementById('coF');
+  coF.value = company;
+
+  // إضافة زر الرجوع
+  let backBtn = document.getElementById('backToCompanies');
+  if(!backBtn){
+    backBtn = document.createElement('div');
+    backBtn.id = 'backToCompanies';
+    backBtn.className = 'co-back';
+    backBtn.innerHTML = '<div class="co-back-btn" onclick="showCompanyScreen()">&#8594; رجوع للشركات</div>';
+    document.getElementById('grid').before(backBtn);
+  }
+  backBtn.style.display = 'flex';
+
+  applyF();
+}
+
 function renderGrid(){
+
   const grid = document.getElementById('grid');
   
   // تنظيف أي تقسيمات قديمة للشركات من الشاشة لمنع اللخبطة
@@ -740,7 +974,11 @@ function cardHTML(it,idx){
       ${it.barcode?`<div class="bc-row">▌▌▌ ${esc(it.barcode)}</div>`:''}
       <div class="nums">
         <div class="nbox"><span class="nv nv-b">${it.pack}</span><span class="nl">تعبئة</span></div>
-        <div class="nbox"><span class="nv nv-g">${it.price.toLocaleString()}</span><span class="nl">IQD</span></div>
+        <div class="nbox">
+          <span class="nv nv-g">${it.price.toLocaleString()}</span>
+          <span class="nl">IQD</span>
+          ${profitPct>0?`<div class="price-profit">+${profitPct}% = ${Math.round(it.price*(1+profitPct/100)).toLocaleString()}</div>`:''}
+        </div>
         <div class="nbox"><span class="nv ${hasStock?'nv-gr':'nv-r'}">${it.rem}</span><span class="nl">باقي</span></div>
       </div>
       <span class="st-badge st-${sc}">${stTxt} (${it.rem})</span>
@@ -938,16 +1176,66 @@ function setV(v){
 function showTab(t){
   document.getElementById('tp').className='tab'+(t==='p'?' on':'');
   document.getElementById('tr').className='tab'+(t==='r'?' on':'');
-  document.getElementById('grid').style.display  =t==='p'?'':' none';
-  document.getElementById('remSec').style.display=t==='r'?'block':'none';
-  if(t==='r') renderRem();
+
+  // إخفاء كل الأقسام أولاً
+  document.getElementById('grid').style.display = 'none';
+  document.getElementById('companyScreen').style.display = 'none';
+  document.getElementById('remSec').style.display = 'none';
+
+  // إخفاء/إظهار البحث والفلاتر
+  const searchBars = document.querySelectorAll('.hdr-r2,.hdr-r3');
+
+  if(t==='p'){
+    // تاب الشركات
+    // البحث يبقى ظاهراً دائماً
+    const backBtn = document.getElementById('backToCompanies');
+    if(backBtn) backBtn.style.display='none';
+    showCompanyScreen();
+  } else {
+    // تاب المنتجات
+    searchBars.forEach(el=>el.style.display='');
+    document.getElementById('grid').style.display = '';
+    const backBtn = document.getElementById('backToCompanies');
+    if(backBtn) backBtn.style.display='none';
+    // إعادة تعيين فلتر الشركة
+    document.getElementById('coF').value = '';
+    applyF();
+  }
 }
 function togStock(){
   onlyStock=!onlyStock;
   document.getElementById('bstock').className='btn btn-stock'+(onlyStock?' on':'');
   document.getElementById('bstock').innerHTML=onlyStock?'🔄 عرض الكل':'✅ إظهار الباقي';
+  // حدّث شاشة الشركات في الخلفية دون تبديل التاب
+  refreshCompanyScreenSilent();
+  // حدّث تاب المنتجات إذا كان ظاهراً
   applyF();
 }
+
+// تطبيق الحالة الافتراضية للزر عند التحميل
+document.addEventListener('DOMContentLoaded',()=>{
+  const btn = document.getElementById('bstock');
+  if(btn){ btn.className='btn btn-stock on'; btn.innerHTML='🔄 عرض الكل'; }
+});
+
+function toggleTheme(){
+  const isLight = document.body.classList.toggle('light-mode');
+  const btn = document.getElementById('themeBtn');
+  if(btn) btn.textContent = isLight ? '🌙 الوضع الليلي' : '☀️ الوضع النهاري';
+  try{ localStorage.setItem('birincilers_theme', isLight?'light':'dark'); }catch(e){}
+}
+// تحميل الوضع المحفوظ
+(function(){
+  try{
+    if(localStorage.getItem('birincilers_theme')==='light'){
+      document.body.classList.add('light-mode');
+      document.addEventListener('DOMContentLoaded',()=>{
+        const btn=document.getElementById('themeBtn');
+        if(btn) btn.textContent='🌙 الوضع الليلي';
+      });
+    }
+  }catch(e){}
+})();
 
 // ══ ORDER MODAL ══
 function openOrd(){
@@ -1047,7 +1335,18 @@ function buildInvoiceHTML(){
     .tot-box .lbl{font-size:14px;}
     .tot-box .val{font-size:24px;font-weight:900;color:#c9a84c;}
     .footer{margin-top:20px;text-align:center;font-size:11px;color:#aaa;}
-  </style></head><body>
+  
+/* ══ شاشة الشركات ══ */
+#companyScreen{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;padding:14px;}
+.co-card{background:var(--bg2);border:1px solid var(--bdr);border-radius:14px;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;transition:.2s;text-align:center;}
+.co-card:active{transform:scale(.96);border-color:var(--gold);}
+.co-card img{width:80px;height:60px;object-fit:contain;}
+.co-card-ph{width:80px;height:60px;background:var(--bg3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:var(--gold);}
+.co-card-name{font-size:13px;font-weight:700;color:var(--fg);}
+.co-card-cnt{font-size:11px;color:var(--muted);background:var(--bg3);border-radius:10px;padding:2px 10px;}
+.co-back{display:flex;align-items:center;gap:8px;padding:10px 14px;cursor:pointer;color:var(--gold);font-weight:700;font-size:14px;}
+
+</style></head><body>
   <div class="hdr">
     <div><div class="brand">BİRİNCİLER</div><div class="sub">فاتورة طلبية</div></div>
     <div style="text-align:left"><div style="font-size:12px;color:#666">${date}</div><div style="font-weight:700;color:#c9a84c">${inv}</div></div>
@@ -1135,7 +1434,17 @@ function sendWhatsApp(){
 }
 
 // ══ EVENTS ══
-document.getElementById('srch').addEventListener('input',applyF);
+document.getElementById('srch').addEventListener('input', function(){
+  const q = this.value.trim();
+  // لو في تاب الشركات وفيه نص → انتقل لتاب المنتجات تلقائياً
+  if(q && document.getElementById('tr').classList.contains('on') === false){
+    // نحن في تاب الشركات (tp = on)
+    if(document.getElementById('tp').classList.contains('on')){
+      showTab('r'); // انتقل لتاب المنتجات
+    }
+  }
+  applyF();
+});
 document.getElementById('detOvl').addEventListener('click',e=>{if(e.target===document.getElementById('detOvl'))closeDet();});
 document.getElementById('ordOvl').addEventListener('click',e=>{if(e.target===document.getElementById('ordOvl'))closeOrd();});
 document.addEventListener('keydown',e=>{
@@ -1151,8 +1460,14 @@ const ADMIN_EMAIL = "mofaknizal@gmail.com"; // ← غيّر هذا إلى إيم
 auth.onAuthStateChanged(user => {
   if (user) {
     document.getElementById('loginScreen').style.display = 'none';
-    const lb = document.getElementById('logoutBtn');
-    if (lb) lb.style.display = 'block';
+    // ملء زر المستخدم
+    const email = user.email || '';
+    const name  = email.split('@')[0].replace(/[._-]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+    const initl = name.charAt(0).toUpperCase();
+    document.getElementById('userBtn').style.display   = 'block';
+    document.getElementById('userAvatar').textContent  = initl;
+    document.getElementById('userName').textContent    = name;
+    document.getElementById('userEmail').textContent   = email;
     // تسجيل الجلسة في Firestore
     const sessionRef = db.collection('sessions').doc();
     sessionRef.set({
@@ -1167,12 +1482,13 @@ auth.onAuthStateChanged(user => {
     // زر المشرف للأدمن فقط
     if (user.email === ADMIN_EMAIL) {
       document.getElementById('adminBtn').style.display = 'block';
+      document.getElementById('profitBtn').style.display = 'flex';
     }
+    showLoadingScreen();
     init();
   } else {
     document.getElementById('loginScreen').style.display = 'flex';
-    const lb2 = document.getElementById('logoutBtn');
-    if (lb2) lb2.style.display = 'none';
+    document.getElementById('userBtn').style.display = 'none';
   }
 });
 
@@ -1206,6 +1522,15 @@ function doLogout() {
   auth.signOut();
 }
 
+function toggleUserMenu(){
+  document.getElementById('userBtn').classList.toggle('open');
+}
+// إغلاق القائمة عند الضغط خارجها
+document.addEventListener('click', e=>{
+  const btn = document.getElementById('userBtn');
+  if(btn && !btn.contains(e.target)) btn.classList.remove('open');
+});
+
 // ══ ADMIN PANEL ══
 function openAdmin() {
   document.getElementById('adminOvl').className = 'admin-ovl on';
@@ -1219,21 +1544,70 @@ function loadSessions() {
     if (snap.empty) { div.innerHTML = '<div style="text-align:center;color:#8b949e;padding:40px">لا توجد جلسات بعد</div>'; return; }
     div.innerHTML = snap.docs.map(doc => {
       const d = doc.data();
-      const loginAt  = d.loginAt  ? new Date(d.loginAt.seconds*1000).toLocaleString('ar') : '—';
-      const logoutAt = d.logoutAt ? new Date(d.logoutAt.seconds*1000).toLocaleString('ar') : '🟢 متصل الآن';
-      const dur = d.duration ? `${Math.floor(d.duration/60)}د ${d.duration%60}ث` : '—';
+      const email = d.email || '—';
+      const name  = email !== '—'
+        ? email.split('@')[0].replace(/[._-]/g,' ').replace(/\b\w/g,c=>c.toUpperCase())
+        : '—';
+      function fmt(ts){
+        if(!ts) return null;
+        const dt = new Date(ts.seconds*1000);
+        const date = dt.toLocaleDateString('ar',{year:'numeric',month:'long',day:'numeric'});
+        const time = dt.toLocaleTimeString('ar',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});
+        return {date, time};
+      }
+      const inF  = fmt(d.loginAt);
+      const outF = d.logoutAt ? fmt(d.logoutAt) : null;
+      let dur = '—';
+      if(d.duration){
+        const h = Math.floor(d.duration/3600);
+        const m = Math.floor((d.duration%3600)/60);
+        const s = d.duration % 60;
+        dur = h>0 ? `${h} ساعة ${m} دقيقة` : m>0 ? `${m} دقيقة ${s} ثانية` : `${s} ثانية`;
+      }
       return `<div class="session-card">
-        <div class="sc-info">
-          <div class="sc-email">👤 ${d.email||'—'}</div>
-          <div class="sc-time">🔵 دخل: ${loginAt}</div>
-          <div class="sc-time">🔴 خرج: ${logoutAt}</div>
+        <div class="sc-name">👤 ${name}</div>
+        <div class="sc-row">
+          <span class="sc-badge in">دخل</span>
+          <div>
+            <div class="sc-time-val">${inF ? inF.time : '—'}</div>
+            <div class="sc-date">${inF ? inF.date : ''}</div>
+          </div>
         </div>
-        <div class="sc-dur">⏱ ${dur}</div>
+        <div class="sc-row">
+          ${outF
+            ? `<span class="sc-badge out">خرج</span>
+               <div>
+                 <div class="sc-time-val">${outF.time}</div>
+                 <div class="sc-date">${outF.date}</div>
+               </div>`
+            : `<span class="sc-badge live">🟢 متصل الآن</span>`
+          }
+        </div>
+        <div class="sc-dur">⏱ المدة: ${dur}</div>
       </div>`;
     }).join('');
   }).catch(e => {
     div.innerHTML = '<div style="color:#d73a49;text-align:center;padding:20px">خطأ في التحميل</div>';
   });
+}
+
+// ══ نسبة الربح ══
+let profitPct = 0;
+try{ profitPct = parseFloat(localStorage.getItem('birincilers_profit')||'0')||0; }catch(e){}
+
+function openProfitPanel(){
+  document.getElementById('userBtn').classList.remove('open');
+  document.getElementById('profitInput').value = profitPct || '';
+  document.getElementById('profitOvl').classList.add('on');
+}
+function closeProfitPanel(){
+  document.getElementById('profitOvl').classList.remove('on');
+}
+function saveProfit(){
+  profitPct = parseFloat(document.getElementById('profitInput').value)||0;
+  try{ localStorage.setItem('birincilers_profit', profitPct); }catch(e){}
+  closeProfitPanel();
+  renderGrid();
 }
 
 // logo في صفحة login
